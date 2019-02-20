@@ -1,0 +1,15 @@
+package _package_;
+
+import _type_;
+import _baseDao_;
+
+/**
+ * 
+ * @author ecmybatis
+ * @since _since_
+ */
+public interface _typeName_Dao extends BaseDao<_typeName_> {
+  
+  // You can type your methods here
+  
+}

@@ -1,0 +1,15 @@
+import _domainPackage_;
+
+/**
+ * 
+ * @author gaigeshen
+ * @since _since_
+ * @param <ID>
+ */
+public interface Model<ID> {
+
+  ID getId();
+
+  void setId(ID id);
+  
+}

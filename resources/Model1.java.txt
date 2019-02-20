@@ -1,0 +1,19 @@
+package _package_;
+
+import lombok.Getter;
+import lombok.Setter; 
+import _baseModel_;
+
+/**
+ * The _typeName_
+ *
+ * @author ecmybatis
+ * @since _since_
+ */
+@Getter
+@Setter
+public class _typeName_ extends BaseModel {
+
+  _modelFields_
+
+}
