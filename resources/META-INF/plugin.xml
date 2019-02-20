@@ -27,6 +27,10 @@
   </extensions>
 
   <actions>
+    <action id="ecmybatis.actions.dialog.generate" class="me.gaigeshen.idea.ecmybatis.action.GenerateDialogAction"
+            text="GenerateDialogAction" description="Show dialog for generate mybatis files">
+      <add-to-group group-id="ToolsMenu" anchor="last"/>
+    </action>
   </actions>
 
 </idea-plugin>
