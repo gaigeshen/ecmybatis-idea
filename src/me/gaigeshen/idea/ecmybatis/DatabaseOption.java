@@ -5,6 +5,7 @@ import com.intellij.openapi.components.ServiceManager;
 import com.intellij.openapi.components.State;
 import com.intellij.openapi.components.Storage;
 import com.intellij.openapi.project.Project;
+import org.apache.commons.lang3.StringUtils;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
@@ -65,6 +66,19 @@ public class DatabaseOption implements PersistentStateComponent<DatabaseOption> 
     option.setUser(user);
     option.setPassword(password);
     return option;
+  }
+
+  /**
+   * 检查是否缺少配置选项值
+   *
+   * @return 是否缺少配置选项值
+   */
+  public boolean checkIfMissingValue() {
+    // 链接地址和用户名必须要有
+    if (StringUtils.isBlank(url) || StringUtils.isBlank(user)) {
+      return false;
+    }
+    return true;
   }
 
   public String getUrl() {
