@@ -10,10 +10,7 @@ import org.jetbrains.annotations.Nullable;
 import javax.swing.*;
 import javax.swing.tree.DefaultMutableTreeNode;
 import java.sql.SQLException;
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author gaigeshen
@@ -34,19 +31,26 @@ public class SelectDatabaseTableDialog extends DialogWrapper {
     this.user = user;
     this.password = password;
     init();
-    setTitle("Select database table...");
+    setTitle("Select Database Table...");
   }
 
   @Nullable
   @Override
   protected JComponent createCenterPanel() {
-    tree = new Tree(createTreeNodes(new DefaultMutableTreeNode()));
+    String databaseName = DatabaseUtils.databaseName(url);
+    tree = new Tree(createTreeNodes(new DefaultMutableTreeNode(databaseName)));
     tree.addTreeSelectionListener(e -> {
       DefaultMutableTreeNode node = (DefaultMutableTreeNode) tree.getLastSelectedPathComponent();
-      if (node != null) {
-        TreeNode treeNode = (TreeNode) node.getUserObject();
+      // 只有选中了数据库表节点才处理
+      if (node != null && !node.isLeaf()) {
+        List<String> fields = new ArrayList<>();
         selected = new HashMap<>();
-        selected.put(treeNode.getName(), treeNode.getColumns());
+        selected.put((String) node.getUserObject(), fields);
+        // 填充该数据库表的所有字段
+        Enumeration children = node.children();
+        while (children.hasMoreElements()) {
+          fields.add((String) ((DefaultMutableTreeNode)children.nextElement()).getUserObject());
+        }
       } else {
         selected = null;
       }
@@ -69,7 +73,11 @@ public class SelectDatabaseTableDialog extends DialogWrapper {
       return node;
     }
     tableFields.forEach((n, fs) -> {
-      node.add(new DefaultMutableTreeNode(new TreeNode(n, fs)));
+      DefaultMutableTreeNode tableNode = new DefaultMutableTreeNode(n);
+      fs.forEach(f -> {
+        tableNode.add(new DefaultMutableTreeNode(f));
+      });
+      node.add(tableNode);
     });
     return node;
   }
@@ -85,28 +93,5 @@ public class SelectDatabaseTableDialog extends DialogWrapper {
     }
     return selected;
   }
-
-  /**
-   * 树节点数据
-   *
-   * @author gaigeshen
-   * @since 02/20 2019
-   */
-  private class TreeNode {
-    private final String name;
-    private final List<String> columns;
-    private TreeNode(String name, List<String> columns) {
-      this.name = name;
-      this.columns = columns;
-    }
-    public String getName() {
-      return name;
-    }
-    public List<String> getColumns() {
-      return columns;
-    }
-  }
-
-
 
 }

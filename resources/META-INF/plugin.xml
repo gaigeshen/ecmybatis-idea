@@ -13,13 +13,9 @@
     ]]>
   </change-notes>
 
-  <idea-version since-build="173.0"/>
+  <idea-version since-build="183.0"/>
 
-  <!-- please see http://www.jetbrains.org/intellij/sdk/docs/basics/getting_started/plugin_compatibility.html
-       on how to target different products -->
-  <!-- uncomment to enable plugin in all products
-  <depends>com.intellij.modules.lang</depends>
-  -->
+  <depends>com.intellij.modules.java</depends>
 
   <extensions defaultExtensionNs="com.intellij">
     <applicationConfigurable instance="me.gaigeshen.idea.ecmybatis.DatabaseOptionConfigurable" />
@@ -28,7 +24,7 @@
 
   <actions>
     <action id="ecmybatis.actions.dialog.generate" class="me.gaigeshen.idea.ecmybatis.action.GenerateDialogAction"
-            text="GenerateDialogAction" description="Show dialog for generate mybatis files">
+            text="Ecmybatis..." description="Show dialogs for generate mybatis files">
       <add-to-group group-id="ToolsMenu" anchor="last"/>
     </action>
   </actions>

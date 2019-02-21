@@ -1,11 +1,8 @@
 package me.gaigeshen.idea.ecmybatis.util;
 
-import java.sql.Connection;
-import java.sql.DatabaseMetaData;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import org.apache.commons.lang3.StringUtils;
+
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
@@ -19,7 +16,35 @@ import java.util.Map;
 public final class DatabaseUtils {
   
   private DatabaseUtils() {}
-  
+
+  static {
+    try {
+      Class.forName("com.mysql.jdbc.Driver");
+    } catch (ClassNotFoundException e) {
+      throw new IllegalStateException("Could not register mysql driver", e);
+    }
+  }
+
+  /**
+   * 根据链接地址分析数据库名称
+   *
+   * @param url 链接地址
+   * @return 数据库名称
+   */
+  public static String databaseName(String url) {
+    // jdbc:mysql://1.2.3.4:3306/tsleasing?useSSL=false
+    if (StringUtils.isBlank(url)) {
+      throw new IllegalArgumentException("Url is blank");
+    }
+    int slashIndex = StringUtils.lastIndexOf(url, "/");
+    int paramIndex = StringUtils.lastIndexOf(url, "?");
+    if (paramIndex != -1) {
+      return StringUtils.mid(url, slashIndex + 1, paramIndex - slashIndex - 1);
+    } else {
+      return StringUtils.mid(url, slashIndex, 999);
+    }
+  }
+
   /**
    * 获取指定数据库表的列
    * 
