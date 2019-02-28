@@ -1,32 +1,24 @@
 <idea-plugin>
-  <id>me.gaigeshen.idea.ecmybatis</id>
-  <name>Ecmybatis</name>
-  <version>1.0</version>
-  <vendor email="gaigeshen@qq.com" url="https://github.com/gaigeshen">gaigeshen</vendor>
+    <id>me.gaigeshen.idea.ecmybatis</id>
+    <name>Ecmybatis</name>
+    <version>1.0</version>
+    <vendor email="gaigeshen@qq.com" url="https://github.com/gaigeshen">gaigeshen</vendor>
 
-  <description><![CDATA[
+    <description><![CDATA[
       A cool tool for generate mybatis files, include dao, mapper and entities files
     ]]></description>
 
-  <change-notes><![CDATA[
+    <change-notes><![CDATA[
       Change notes here, include change notes to display
     ]]>
-  </change-notes>
+    </change-notes>
 
-  <idea-version since-build="183.0"/>
+    <idea-version since-build="183.0"/>
 
-  <depends>com.intellij.modules.java</depends>
+    <depends>com.intellij.modules.java</depends>
 
-  <extensions defaultExtensionNs="com.intellij">
-    <applicationConfigurable instance="me.gaigeshen.idea.ecmybatis.DatabaseOptionConfigurable" />
-    <applicationService serviceImplementation="me.gaigeshen.idea.ecmybatis.DatabaseOption" />
-  </extensions>
-
-  <actions>
-    <action id="ecmybatis.actions.dialog.generate" class="me.gaigeshen.idea.ecmybatis.action.GenerateDialogAction"
-            text="Ecmybatis..." description="Show dialogs for generate mybatis files">
-      <add-to-group group-id="ToolsMenu" anchor="last"/>
-    </action>
-  </actions>
+    <extensions defaultExtensionNs="com.intellij">
+        <toolWindow id="Ecmybatis" anchor="right" factoryClass="me.gaigeshen.idea.ecmybatis.Window" />
+    </extensions>
 
 </idea-plugin>

@@ -1,4 +1,4 @@
-package me.gaigeshen.idea.ecmybatis.data;
+package me.gaigeshen.idea.ecmybatis;
 
 import java.util.StringJoiner;
 
@@ -56,5 +56,9 @@ public final class Table {
     Table other = (Table) obj;
     return name.equals(other.name);
   }
-  
+
+  @Override
+  public String toString() {
+    return name;
+  }
 }

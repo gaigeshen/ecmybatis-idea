@@ -1,4 +1,4 @@
-package me.gaigeshen.idea.ecmybatis.data;
+package me.gaigeshen.idea.ecmybatis;
 
 import me.gaigeshen.idea.ecmybatis.util.JdbcTypeMapping;
 import me.gaigeshen.idea.ecmybatis.util.NameUtils;
@@ -68,5 +68,10 @@ public final class Column {
 
   public String getJavaType() {
     return javaType;
+  }
+
+  @Override
+  public String toString() {
+    return columnName;
   }
 }
