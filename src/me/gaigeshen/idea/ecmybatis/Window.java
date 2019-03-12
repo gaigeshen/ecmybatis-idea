@@ -38,7 +38,6 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.Charset;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.List;
 import java.util.*;
 
@@ -376,8 +375,7 @@ public class Window implements ToolWindowFactory {
     String content = MODEL_CONTENT
             .replaceAll("_package_", domainPackage.getQualifiedName())
             .replaceAll("_baseModel_", baseModelPackageName + "." + MODEL_BASE_SIMPLE)
-            .replaceAll("_typeName_", typeName)
-            .replaceAll("_since_", new SimpleDateFormat("MM/dd yyyy").format(new Date()));
+            .replaceAll("_typeName_", typeName);
     StringBuilder fields = new StringBuilder();
     columns.forEach(col -> {
       if (!col.getColumnName().equals("id")) {
@@ -436,8 +434,7 @@ public class Window implements ToolWindowFactory {
             .replaceAll("_package_", daoPackage.getQualifiedName())
             .replaceAll("_typeName_", typeName)
             .replaceAll("_type_", type.getPackageName() + "." + typeName)
-            .replaceAll("_baseDao_", baseDao.getPackageName() + "." + DAO_BASE_SIMPLE)
-            .replaceAll("_since_", new SimpleDateFormat("MM/dd yyyy").format(new Date()));
+            .replaceAll("_baseDao_", baseDao.getPackageName() + "." + DAO_BASE_SIMPLE);
     PsiFile dao = PsiFileFactory.getInstance(module.getProject()).createFileFromText(typeName + "Dao.java", StdFileTypes.JAVA, content);
     PsiDirectory daoPackageDirectory = PackageUtil.findPossiblePackageDirectoryInModule(module, daoPackage.getQualifiedName());
     if (daoPackageDirectory == null) {
@@ -479,7 +476,7 @@ public class Window implements ToolWindowFactory {
       }
     });
     String content = MAPPER_CONTENT
-            .replaceAll("_namespace_", daoPackage.getQualifiedName() + "." + typeName)
+            .replaceAll("_namespace_", daoPackage.getQualifiedName() + "." + typeName + "Dao")
             .replaceAll("_table_", NameUtils.camelToUnderline(typeName).substring(1))
             .replaceAll("_fields_", fieldsFromColumns(columns))
             .replaceAll("_type_", typeName)

@@ -16,7 +16,6 @@ import _daoPackage_.ResultMappings;
  * 所有的实体对象继承此类，假定所有的实体对象编号的类型为长整型
  * 
  * @author gaigeshen
- * @since _since_
  */
 public abstract class BaseModel implements Model<Long> {
   
@@ -94,7 +93,6 @@ public abstract class BaseModel implements Model<Long> {
   /**
    * 
    * @author gaigeshen
-   * @since _since_
    */
   class ResultMappingValue {
     

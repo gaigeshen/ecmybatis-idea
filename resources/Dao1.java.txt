@@ -6,7 +6,6 @@ import _baseDao_;
 /**
  * 
  * @author ecmybatis
- * @since _since_
  */
 public interface _typeName_Dao extends BaseDao<_typeName_> {
   

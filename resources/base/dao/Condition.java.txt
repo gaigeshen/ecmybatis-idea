@@ -8,7 +8,6 @@ import java.util.List;
  * 用于数据访问中条件查询
  * 
  * @author gaigeshen
- * @since _since_
  * @param <T> 查询返回实体的类型
  */
 public final class Condition<T> {
@@ -148,7 +147,6 @@ public final class Condition<T> {
    * 条件规则集合
    * 
    * @author gaigeshen
-   * @since 03/06 2018
    */
   public class Criteria {
     
@@ -384,7 +382,6 @@ public final class Condition<T> {
    * 条件规则
    * 
    * @author gaigeshen
-   * @since {{since}}
    */
   class Criterion {
     
@@ -443,7 +440,6 @@ public final class Condition<T> {
    * 排序方式
    * 
    * @author gaigeshen
-   * @since {{since}}
    */
   enum Sort {
     

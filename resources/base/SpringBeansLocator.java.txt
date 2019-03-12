@@ -8,7 +8,6 @@ import org.springframework.stereotype.Component;
 /**
  * 
  * @author gaigeshen
- * @since _since_
  */
 @Component
 public class SpringBeansLocator implements ApplicationContextAware {

@@ -19,7 +19,6 @@ import _basePackage_.SpringBeansLocator;
 /**
  * 
  * @author gaigeshen
- * @since _since_
  */
 public final class ResultMappings {
   

@@ -8,7 +8,6 @@ import _baseModel_;
  * The _typeName_
  *
  * @author ecmybatis
- * @since _since_
  */
 @Getter
 @Setter
