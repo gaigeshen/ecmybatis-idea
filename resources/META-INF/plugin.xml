@@ -1,15 +1,19 @@
 <idea-plugin>
     <id>me.gaigeshen.idea.ecmybatis</id>
     <name>Ecmybatis</name>
-    <version>1.0</version>
+    <version>1.1</version>
     <vendor email="gaigeshen@qq.com" url="https://github.com/gaigeshen">gaigeshen</vendor>
 
     <description><![CDATA[
+      This plugin <a href="https://github.com/gaigeshen/ecmybatis-idea">Ecmybatis</a>.
       A cool tool for generate mybatis files, include dao, mapper and entities files
     ]]></description>
 
     <change-notes><![CDATA[
-      Change notes here, include change notes to display
+      <ul>
+        <li>1.1 fix bugs and improved, findFirst method fixed, map TINYINT to Integer</li>
+        <li>1.0 first version commit/li>
+      </ul>
     ]]>
     </change-notes>
 
