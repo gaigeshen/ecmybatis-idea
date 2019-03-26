@@ -109,9 +109,7 @@
     <if test="_parameter != null">
       <include refid="criteria" />
     </if>
-    <if test="slice">
-      limit 0, 1
-    </if>
+    limit 0, 1
   </select>
   
   <select id="count" resultType="long">

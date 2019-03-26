@@ -10,7 +10,8 @@ import java.util.Date;
 public enum JdbcTypeMapping {
 
   BIT(Boolean.class),
-  
+
+  TINYINT(Integer.class),
   INT(Integer.class),
   BIGINT(Long.class),
   FLOAT(Double.class),
