@@ -18,7 +18,7 @@ import _basePackage_.SpringBeansLocator;
 
 /**
  * 
- * @author gaigeshen
+ * @author ecmybatis
  */
 public final class ResultMappings {
   
@@ -68,9 +68,7 @@ public final class ResultMappings {
    * @return 列名称
    */
   public static String getIdColumn(Class<?> type) {
-    
     return getIdMapping(type).getColumn();
-    
   }
   
   /**
@@ -80,9 +78,7 @@ public final class ResultMappings {
    * @return 属性名称
    */
   public static String getIdProperty(Class<?> type) {
-    
     return getIdMapping(type).getProperty();
-    
   }
   
   /**
@@ -93,9 +89,7 @@ public final class ResultMappings {
    * @return 列名称
    */
   public static String getColumn(Class<?> type, String property) {
-    
     return getMapping(type, property).getColumn();
-    
   }
   
   /**
@@ -106,61 +100,44 @@ public final class ResultMappings {
    * @return 属性名称
    */
   public static String getProperty(Class<?> type, String column) {
-    
     List<ResultMapping> mappings = getMappings(type);
-    
     for (ResultMapping mapping : mappings) {
       if (mapping.getColumn().equals(column)) {
         return mapping.getProperty();
       }
     }
-    
     throw new IllegalStateException("No such mapping of type " + type.getName() + " map column " + column);
-    
   }
   
   public static ResultMapping getIdMapping(Class<?> type) {
-    
     List<ResultMapping> mappings = idMappings.get(type);
-    
     if (mappings != null) {
       if (mappings.size() != 1) {
         throw new IllegalStateException("Too many id mapping of type " + type.getName());
       }
-      
       return mappings.get(0);
     }
-
     throw new IllegalStateException("No id mapping of type " + type.getName());
   }
   
   public static ResultMapping getMapping(Class<?> type, String property) {
-    
     List<ResultMapping> mappings = getMappings(type);
-    
     for (ResultMapping mapping : mappings) {
       if (mapping.getProperty().equals(property)) {
         return mapping;
       }
     }
-    
     throw new IllegalStateException("No such mapping of type " + type.getName() + " map property " + property);
   }
   
   public static List<ResultMapping> getMappings(Class<?> type) {
-
     List<ResultMapping> mappings1 = mappings.get(type);
-
     if (mappings1 == null)
     	return Collections.emptyList();
-
     return Collections.unmodifiableList(mappings1);
   }
   
   public static Map<Class<?>, List<ResultMapping>> getMappings() {
-    
     return Collections.unmodifiableMap(mappings);
-    
   }
-  
 }

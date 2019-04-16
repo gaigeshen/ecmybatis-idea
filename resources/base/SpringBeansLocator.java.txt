@@ -6,8 +6,9 @@ import org.springframework.context.ApplicationContextAware;
 import org.springframework.stereotype.Component;
 
 /**
- * 
- * @author gaigeshen
+ * For get beans from spring context
+ *
+ * @author ecmybatis
  */
 @Component
 public class SpringBeansLocator implements ApplicationContextAware {
@@ -28,8 +29,6 @@ public class SpringBeansLocator implements ApplicationContextAware {
 
   @Override
   public void setApplicationContext(ApplicationContext context) throws BeansException {
-
     CONTEXT = context;
   }
-
 }

@@ -8,14 +8,12 @@ import java.util.List;
 import org.apache.commons.lang3.reflect.FieldUtils;
 import org.apache.ibatis.mapping.ResultMapping;
 
-import com.alibaba.fastjson.annotation.JSONField;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import _daoPackage_.ResultMappings;
 
 /**
  * 所有的实体对象继承此类，假定所有的实体对象编号的类型为长整型
  * 
- * @author gaigeshen
+ * @author ecmybatis
  */
 public abstract class BaseModel implements Model<Long> {
   
@@ -25,40 +23,26 @@ public abstract class BaseModel implements Model<Long> {
   private List<ResultMappingValue> mappingValues = new ArrayList<>();
   
   public BaseModel() {
-    
     List<ResultMapping> mappings = ResultMappings.getMappings(getClass());
-    
       for (ResultMapping mapping : mappings) {
-        
         if (!mapping.getProperty().equals("id")) {
           this.mappingValues.add(new ResultMappingValue(mapping));
         }
       }
   }
 
-  @JsonIgnore
-  @JSONField(serialize = false)  
-  public List<ResultMappingValue> getValues() {
-
+  List<ResultMappingValue> getValues() {
     try {
       for (ResultMappingValue mapping : mappingValues) {
-
         ResultMapping rm = mapping.getMapping();
-
         String property = rm.getProperty();
-
         Field field = FieldUtils.getField(getClass(), property, true);
-
         mapping.value(field.get(this));
       }
-
       return Collections.unmodifiableList(mappingValues);
-
     } catch (IllegalAccessException e) {
-      throw new IllegalStateException(
-          "Cannot get field value of type " + getClass().getName());
+      throw new IllegalStateException("Cannot get field value of type " + getClass().getName());
     }
-
   }
   
   @Override
@@ -78,7 +62,6 @@ public abstract class BaseModel implements Model<Long> {
 
   @Override
   public boolean equals(Object obj) {
-    
     if (this == obj)
       return true;
     
@@ -92,7 +75,7 @@ public abstract class BaseModel implements Model<Long> {
   
   /**
    * 
-   * @author gaigeshen
+   * @author ecmybatis
    */
   class ResultMappingValue {
     

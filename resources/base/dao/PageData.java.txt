@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 /**
  * 分页数据
  * 
- * @author gaigeshen
+ * @author ecmybatis
  * @param <T> 数据类型
  */
 public final class PageData<T> {
