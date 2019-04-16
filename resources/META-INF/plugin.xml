@@ -1,7 +1,7 @@
 <idea-plugin>
     <id>me.gaigeshen.idea.ecmybatis</id>
     <name>Ecmybatis</name>
-    <version>1.1</version>
+    <version>1.2</version>
     <vendor email="gaigeshen@qq.com" url="https://github.com/gaigeshen">gaigeshen</vendor>
 
     <description><![CDATA[
@@ -11,6 +11,7 @@
 
     <change-notes><![CDATA[
       <ul>
+        <li>1.2 Code improved</li>
         <li>1.1 fix bugs and improved, findFirst method fixed, map TINYINT to Integer</li>
         <li>1.0 first version commit</li>
       </ul>
