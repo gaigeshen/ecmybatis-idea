@@ -109,6 +109,9 @@
     <if test="_parameter != null">
       <include refid="criteria" />
     </if>
+    <if test="orderBy != null and orderBy != ''">
+      order by ${orderBy} ${sort}
+    </if>
     limit 0, 1
   </select>
   
